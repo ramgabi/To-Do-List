@@ -293,6 +293,8 @@ function buildCalnedar(now) {
     $calendarMonth.textContent = monthArr[now.getMonth()];
     $calendarMonthNum.textContent = `${now.getMonth()+1}`.padStart(2,'0');
 
+    let forLocalDay = `${$calendarYear.textContent}${$calendarMonthNum.textContent}`;
+
     const $calendar = document.querySelector('.calendar-table');
 
     let firstDate = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -331,6 +333,12 @@ function buildCalnedar(now) {
 
                 if(thisMonth && setDays == new Date().getDate()) {
                     cell.classList.add('calender-today');
+                }
+
+                let checkItem = localStorage.getItem(JSON.parse(`${forLocalDay}` + `${setDays}`.padStart(2,'0'))) 
+
+                if(checkItem && checkItem != '[]' ){
+                    cell.classList.add('calender-dot');
                 }
 
                 setDays += 1;
