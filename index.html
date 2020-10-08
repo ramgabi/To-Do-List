@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>To Do List</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="home-wrap wrap-item on">
+            <span class="date">0000년 00월 00일 월요일</span>
+            <h1 class="time">
+                <span class="hour">00</span>
+                <span class="minute">00</span>
+                <span class="second">00</span>
+            </h1>
+            <p class="greeting">
+                안녕하세요, <span class="user-name"></span>님!
+            </p>
+            <p class="today-msg">오늘의 할일은</p>
+            <ul class="memo-list">
+                
+            </ul>
+            <form action="#" method="post" name="home-frm" class="home-frm">
+                <input type="text" placeholder="오늘의 할일을 빠르게 추가하세요" title="할일입력" class="memo-input"/>
+            </form>
+            <div class="modal-div">
+                <span class="modal-tit">닉네임 설정</span>
+                <p class="modal-txt">
+                    안녕하세요, 처음 오셨네요!<br>
+                    당신의 이름을 알려주세요.
+                </p>
+                <form action="#" name="modal-frm" class="modal-frm">
+                    <input type="text" title="닉네임 설정 입력칸" placeholder="최대 8글자까지 설정 가능합니다" maxlength="8" class="modal-name-input"/>
+                </form>
+            </div>
+            <div class="modal-bg"></div>
+        </div>
+
+        <div class="calendar-wrap wrap-item">
+            <div class="wrap-left">
+                <div class="calendar-info">
+                    <span class="calendar-year">2020</span>
+                    <h1 class="calendar-month">SEPTEMBER</h1>
+                    <span class="calendar-month-num">09</span>
+                    
+                    <ul class="month-btn">
+                        <li class="month-btn-prev"><button onclick="calendarBtn('-1')">이전 월</button></li>
+                        <li class="month-btn-next"><button onclick="calendarBtn('+1')">다음 월</button></li>
+                    </ul>
+                </div>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>SUN</th>
+                            <th>MON</th>
+                            <th>TUE</th>
+                            <th>WED</th>
+                            <th>THU</th>
+                            <th>FRI</th>
+                            <th>SAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="wrap-right">
+                <h2 class="calendar-day">00<span>day</span></h2>
+                <ul class="memo-list">
+                </ul>
+                <form action="#" method="post" name="calendar-frm" class="calendar-frm">
+                    <input type="text" placeholder="할일을 입력해주세요" title="할일입력" class="memo-input"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="timeline-wrap wrap-item">
+            <div class="timeline-info">
+                <span class="timeline-year">2020.09</span>
+                <h1 class="timeline-month">SEPTEMBER</h1>
+                
+                <ul class="month-btn">
+                    <li class="month-btn-prev"><button onclick="timelineBtn('-1')">이전 월</button></li>
+                    <li class="month-btn-next"><button onclick="timelineBtn('+1')">다음 월</button></li>
+                </ul>
+            </div>
+            <ul class="timeline-zone">
+            </ul>
+        </div>
+        
+        <div class="setting-wrap wrap-item">
+            <form action="#" method="post" name="setting-frm" class="setting-frm">
+                <dl class="setting-list">
+                    <dt class="setting-tit">
+                        닉네임 변경
+                    </dt>
+                    <dd>
+                        <input type="text" title="닉네임 변경 입력칸" placeholder="입력 후 Enter로 설정" maxlength="8" onkeyPress="if (event.keyCode==13){changeUserName(event);}" class="setting-name-input"/>
+                        <span class="setting-name-tip">최대 8글자까지 설정 가능합니다</span>
+                    </dd>
+                    <dt class="setting-tit">
+                        다크테마 모드
+                    </dt>
+                    <dd>
+                        <input type="checkbox" id="setting-theme-chk" class="setting-theme-chk"/>
+                        <label for="setting-theme-chk" onclick="themeMode()">다크테마 모드 켜기</label>
+                    </dd>
+                    <dt class="setting-tit">
+                        사이드바 왼쪽 모드
+                    </dt>
+                    <dd>
+                        <input type="checkbox" id="setting-mode-chk" class="setting-mode-chk"/>
+                        <label for="setting-mode-chk" onclick="sidebarMode()">사이드바 왼쪽 모드 켜기</label>
+                    </dd>
+                    <dt class="setting-tit">
+                        데이터 초기화
+                    </dt>
+                    <dd>
+                        <button class="setting-del">초기화</button>
+                    </dd>
+                </dl>
+                <small class="made">Made by LeeYeBin</small>
+            </form>
+            <div class="modal-div">
+                <span class="modal-tit">데이터 초기화</span>
+                <p class="modal-txt">
+                    정말로 모든 데이터를 초기화하시겠습니까?<br>
+                    초기화 된 데이터는 복구가 불가능합니다. 
+                </p>
+                <ul class="modal-btn-list">
+                    <li class="modal-btn">
+                        <a href="#" class="btn-cancle" onclick="closeModalDel(event)">N</a>
+                    </li>
+                    <li class="modal-btn modal-btn-warring">
+                        <a href="#" class="btn-agree" onclick="resetData(event)">Y</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="modal-msg">
+                <p>닉네임이 변경되었습니다</p>
+            </div> -->
+            <div class="modal-bg" onclick="closeModalDel(event)"></div>
+        </div>
+
+        <div class="sidebar-wrap">
+            <ul class="sidebar-list">
+                <li class="sidebar-item on">
+                    <a href="#" class="sidebar-home" onclick="selectMenu(event);loadMemo();">홈으로</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-calendar" onclick="selectMenu(event);buildCalnedar(new Date());">캘린더로</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-timeline" onclick="selectMenu(event);buildTimeline(new Date());">타임라인으로</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-setting" onclick="selectMenu(event);">설정으로</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/time.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/memo.js"></script>
+    <script src="js/tab.js"></script>
+    <script src="js/setting.js"></script>
+</body>
+
+</html>
