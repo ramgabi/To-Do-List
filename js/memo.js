@@ -80,7 +80,6 @@ function loadCellMemo(cell) {
         let memoList = JSON.parse(localStorage.getItem(isTime));
         
         for(memoItem of memoList){
-            console.log(isTime)
             if(memoItem.type == 'clear') {
                 memoBox += `<li class="memo-item memo-clear">${memoItem.text}`;
             }else{

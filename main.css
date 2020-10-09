@@ -1,8 +1,6 @@
 /* font */
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
 /* reset */
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
-/* reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -116,7 +114,16 @@ html {
     .time .hour::before, .time .minute::before {
       content: '';
       position: absolute;
-      top: 50px;
+      top: 40px;
+      right: -30px;
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      border-radius: 50%; }
+    .time .hour::after, .time .minute::after {
+      content: '';
+      position: absolute;
+      top: 90px;
       right: -30px;
       width: 15px;
       height: 15px;
@@ -128,14 +135,14 @@ html {
   line-height: 1.8; }
 
 .memo-list {
+  position: relative;
   display: inline-flex;
   flex-direction: column;
-  position: relative;
+  align-items: center;
+  margin: 30px 0;
   font-size: 1.5rem;
   font-weight: bold;
-  line-height: 2;
-  margin: 30px 0;
-  align-items: center; }
+  line-height: 2; }
 
 .memo-item {
   position: relative;
