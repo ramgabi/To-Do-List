@@ -53,4 +53,4 @@ function loadLocation() {
 
 }
 
-loadLocation();
+askForLoaction();

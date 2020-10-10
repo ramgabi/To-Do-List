@@ -38,10 +38,14 @@ function resetData(e) {
 }
 
 
-// soft Theme mode
+// soft Theme mode & background
 
 const $themeChk = document.querySelector('.setting-theme-chk');
 const $wrapper = document.querySelector('.wrapper');
+
+const backgroundURL = 'https://source.unsplash.com/random/1920x1080';
+
+console.log($wrapper.style.backgroundImage = `url(${backgroundURL})`);
 
 if(localStorage.getItem('themeMode') == 'true') {
     $wrapper.classList.add('dark');
