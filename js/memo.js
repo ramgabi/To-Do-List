@@ -1,42 +1,37 @@
 // 인덱스값 얻기
 
 function getIndexForMemo(ele) {
-    let i = 0;
+    let index = 0;
 
     while((ele = ele.previousSibling) != null) {
-        if(ele.nodeType === 1) i++;
+        if(ele.nodeType === 1) index++;
     }
-
-    return  i;
+    return index;
 }
 
 
 // 현재 시간
 
 function whatTimeIs(now) {    
-    let nowYear = `${now.getFullYear()}`;
-    let nowMonth = `${now.getMonth()+1}`.padStart(2,'0');
-    let nowDate = `${now.getDate()}`.padStart(2,'0');
+    const nowYear = `${now.getFullYear()}`;
+    const nowMonth = `${now.getMonth() + 1}`.padStart(2,'0');
+    const nowDate = `${now.getDate()}`.padStart(2,'0');
 
-    let nowTime = nowYear + nowMonth + nowDate;
-
-    return nowTime;
+    return nowYear + nowMonth + nowDate;
 }
 
 // memo 불러오기 (홈)
 
-const $memoList = document.querySelector('.home-wrap .memo-list');
-const $todayMsg = document.querySelector('.today-msg');
 
 loadMemo();
 
 function loadMemo() {
     
+    const isTime = whatTimeIs(new Date());
     let memoBox = '';
-    let isTime = whatTimeIs(new Date());
     
-    if(localStorage.getItem(isTime) && localStorage.getItem(isTime) != '[]') {
-        let memoList = JSON.parse(localStorage.getItem(isTime));
+    if(localStorage.isTime && localStorage.isTime != '[]') {
+        let memoList = JSON.parse(localStorage.isTime);
     
         for(memoItem of memoList){
             if(memoItem.type == 'clear') {
@@ -55,7 +50,6 @@ function loadMemo() {
 
         return;
     }  
-
     $todayMsg.textContent = '오늘의 할일이 없어요';
 }
 
@@ -66,10 +60,10 @@ const $calendarDay = document.querySelector('.calendar-day');
 const $calendarMemoList = document.querySelector('.calendar-wrap .memo-list');
 
 function loadCellMemo(cell) {
-    document.querySelector('.calendar-wrap').classList.add('onCell');
+    $calendarWrap.classList.add('onCell');
 
     let cellDay = cell.textContent;
-    $calendarDay.innerHTML = `${cellDay}<span>day</span>`
+    $calendarDay.innerHTML = `${cellDay}<span>day</span>`;
 
     let memoBox = '';
     let isTime = whatTimeIs(new Date($calendarYear.textContent, parseInt($calendarMonthNum.textContent) - 1, ($calendarDay.textContent.substring(0,2))));
@@ -142,7 +136,6 @@ function delMemo(rowMemo,type) {
         
         let rowMemoList = JSON.parse(localStorage.getItem(isTime));
 
-        console.log(getIndexForMemo(memo))
         rowMemoList.splice(getIndexForMemo(memo), 1);
         localStorage.setItem(isTime,JSON.stringify(rowMemoList));
 

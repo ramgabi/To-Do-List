@@ -1,8 +1,8 @@
-const $modalHomeDiv = document.querySelector('.home-wrap .modal-div');
-const $modalHomeBg = document.querySelector('.home-wrap .modal-bg');
+const modalMsg = document.createElement('div');
+modalMsg.classList.add('modal-msg');
+modalMsg.innerHTML = `<p>닉네임이 변경되었습니다</p>`;
 
-if(!localStorage.userName) {
-
+if(!LS_userName) {
     $modalHomeDiv.style.display = 'block';
     $modalHomeBg.style.display = 'block';
 
@@ -11,12 +11,12 @@ if(!localStorage.userName) {
         $modalHomeBg.classList.add('on');
     },500)
 }else{
-    document.querySelector('.user-name').textContent = localStorage.getItem('userName');
+    $userName.textContent = LS_userName;
 }
 
 function setUserName() {
-    localStorage.setItem('userName', document.querySelector('.home-wrap .modal-name-input').value);
-    document.querySelector('.user-name').textContent = localStorage.getItem('userName');
+    localStorage.setItem('userName', $modalNameInput.value);
+    $userName.textContent = LS_userName;
     
     $modalHomeDiv.classList.remove('on');
     $modalHomeBg.classList.remove('on');
@@ -24,29 +24,21 @@ function setUserName() {
     setTimeout(function() {
         $modalHomeDiv.style.display = 'none';
         $modalHomeBg.style.display = 'none';
-    },500)
+    },500);
 }
-
-document.querySelector('.home-wrap .modal-frm').addEventListener('submit',setUserName);
-
-const modalMsg = document.createElement('div')
-modalMsg.classList.add('modal-msg')
-modalMsg.innerHTML = `<p>닉네임이 변경되었습니다</p>`
 
 function changeUserName(e) {
     e.preventDefault();
-
-    localStorage.setItem('userName', document.querySelector('.setting-frm .setting-name-input').value);
-    document.querySelector('.user-name').textContent = localStorage.getItem('userName');
-    document.querySelector('.setting-frm .setting-name-input').value = '';
-
-    document.querySelector('.setting-wrap').appendChild(modalMsg)
-
+    
+    localStorage.setItem('userName', $settingNameInput.value);
+    $userName.textContent = LS_userName;
+    $settingNameInput.value = '';
+    
+    $settingWrap.appendChild(modalMsg);
+    
     setTimeout(function(){
-        document.querySelector('.setting-wrap').removeChild(modalMsg)
-    },3000)
-
+        $settingWrap.removeChild(modalMsg);
+    },3000);
 }
 
-
-
+$modalFrm.addEventListener('submit',setUserName);

@@ -1,10 +1,6 @@
 const API_KEY = '1e8dd688f0eb092a48f169f41b3dc446';
 const COORDS = 'coords';
 
-const $weather = document.querySelector('.weather');
-const $weatherLoaction = document.querySelector('.weather-location');
-const $weatherNum = document.querySelector('.weather-num');
-
 function getWeather(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`).then(function(response) {
         return response.json();
