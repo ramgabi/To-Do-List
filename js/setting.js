@@ -12,6 +12,7 @@ const $modalBg = document.querySelector('.setting-wrap .modal-bg');
 const $themeChk = document.querySelector('.setting-theme-chk');
 const $sidebarChk = document.querySelector('.setting-mode-chk');
 const $sidebarWrap = document.querySelector('.sidebar-wrap');
+const $settingWrap = document.querySelector('.setting-wrap');
 
 const $modalHomeDiv = document.querySelector('.home-wrap .modal-div');
 const $modalHomeBg = document.querySelector('.home-wrap .modal-bg');
