@@ -16,7 +16,7 @@ if(!LS_userName) {
 
 function setUserName() {
     localStorage.setItem('userName', $modalNameInput.value);
-    $userName.textContent = LS_userName;
+    $userName.textContent = localStorage.userName;
     
     $modalHomeDiv.classList.remove('on');
     $modalHomeBg.classList.remove('on');
@@ -31,7 +31,7 @@ function changeUserName(e) {
     e.preventDefault();
     
     localStorage.setItem('userName', $settingNameInput.value);
-    $userName.textContent = LS_userName;
+    $userName.textContent = localStorage.userName;
     $settingNameInput.value = '';
     
     $settingWrap.appendChild(modalMsg);
